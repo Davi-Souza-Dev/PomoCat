@@ -76,7 +76,7 @@ export const useTimerStore = defineStore('TimerStore', {
       setTimeout(() => {
         audio.pause()
         audio.currentTime = 0
-      }, 3000)
+      }, 10000)
     },
     async saveFocus(status: string) {
       const formData = new FormData()
