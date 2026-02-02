@@ -7,28 +7,38 @@ import { useTimerStore } from '@/stores/TimerStore'
 import { LucideBookOpen, MenuIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import { useCardStore } from '@/stores/CardStore'
-import { useCatalogStore } from '@/stores/CatalogStore'
 
 const timerStore = useTimerStore()
-const catalogStore = useCatalogStore();
+const showDialogCatalog = ref(false)
+
+const cardStore = useCardStore();
+
+const showCatalog = async () =>{
+  await cardStore.getCards();
+  showDialogCatalog.value = !showDialogCatalog.value
+}
+
+
+
 </script>
 
 <template>
-  <SidebarProvider :default-open="false">
+  <SidebarProvider>
     <AppSidebar />
     <main class="w-full h-full p-5 flex flex-col gap-15 items-center justify-center align-middle">
+      <DialogCatalog :open="showDialogCatalog" @update:open="showDialogCatalog = false" />
       <header class="w-full h-20 flex justify-between align-middle">
         <SidebarTrigger as-child v-if="timerStore.timer.start == false">
           <Button class="w-10 h-10 border-2 border-primary-foreground"><MenuIcon /></Button>
         </SidebarTrigger>
         <Button
-          @click="catalogStore.showCatalog()"
+          @click="showCatalog"
           class="w-10 h-10 border-2 border-primary-foreground"
           v-if="timerStore.timer.start == false"
           ><LucideBookOpen />
         </Button>
       </header>
-      <section class="w-full h-full flex flex-col justify-center align-middle items-center gap-3 p-3">
+      <section class="w-full flex flex-col justify-center align-middle items-center gap-3">
         <slot />
       </section>
     </main>
