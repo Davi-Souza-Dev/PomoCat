@@ -8,6 +8,7 @@ import { LucideBookOpen, MenuIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import { useCardStore } from '@/stores/CardStore'
 import { useCatalogStore } from '@/stores/CatalogStore'
+import Loading from '@/components/pomodoro/Loading.vue'
 
 const timerStore = useTimerStore()
 const showDialogCatalog = ref(false)
@@ -15,12 +16,19 @@ const showDialogCatalog = ref(false)
 const cardStore = useCardStore();
 
 const catalogStore = useCatalogStore();
+const loading = ref(false);
+const showCatalog = async () =>{
+  loading.value = !loading.value
+  await catalogStore.showCatalog()
+  loading.value = !loading.value
 
+}
 
 </script>
 
 <template>
   <SidebarProvider :default-open="false">
+    <Loading :is-loading="loading"/>
     <AppSidebar />
     <main class="w-full min-h-screen p-5 flex flex-col">
       
@@ -30,7 +38,7 @@ const catalogStore = useCatalogStore();
         </SidebarTrigger>
         
         <Button
-          @click="catalogStore.showCatalog()"
+          @click="showCatalog()"
           class="w-10 h-10 border-2 border-primary-foreground"
           v-if="!timerStore.timer.start"
         >
