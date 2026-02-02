@@ -16,7 +16,7 @@ export const useCardStore = defineStore('CardStore', {
     async getCards() {
       try{
         const response = await api.get('/getcatalog');
-        this.cards = response.data.cards
+        return response.data
       }catch($erro){
         router.replace('/auth/login');
       }

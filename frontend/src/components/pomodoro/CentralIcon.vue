@@ -7,15 +7,15 @@ const timerStore = useTimerStore()
 <template>
   <div
     v-if="timerStore.timer.start == false"
-    class="rounded-full w-50 h-50 bg-primary flex align-middle items-center justify-center"
+    class="rounded-full w-60 h-60 bg-primary flex align-middle items-center justify-center"
   >
-    <div class="rounded-full w-45 h-45 bg-foreground flex align-middle items-center justify-center">
-      <div class="rounded-full w-45 h-45 bg-gray-300 flex align-middle items-center justify-center">
+    <div class="rounded-full w-55 h-55 bg-foreground flex align-middle items-center justify-center">
+      <div class="rounded-full w-55 h-55 bg-gray-300 flex align-middle items-center justify-center">
         <svg
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          class="stroke-primary w-20"
+          class="stroke-primary w-30"
         >
           <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
           <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -34,13 +34,13 @@ const timerStore = useTimerStore()
   </div>
   <div
     v-else
-    class="rounded-full w-50 h-50 flex items-center justify-center"
+    class="rounded-full w-60 h-60 flex items-center justify-center"
     :style="{
       background: `linear-gradient(to top, var(--color-primary) ${timerStore.progress}%, #6a7282 ${timerStore.progress}%)`,
     }"
   >
     <div
-      class="rounded-full w-45 h-45 flex items-center justify-center"
+      class="rounded-full w-55 h-55 flex items-center justify-center"
       :style="{
         background: `linear-gradient(to top, var(--color-foreground) ${timerStore.progress}%, #d1d5dc ${timerStore.progress}%)`,
       }"
@@ -49,7 +49,7 @@ const timerStore = useTimerStore()
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        class="w-20 transition-all duration-500"
+        class="w-30 transition-all duration-500"
       >
         <defs>
           <linearGradient
