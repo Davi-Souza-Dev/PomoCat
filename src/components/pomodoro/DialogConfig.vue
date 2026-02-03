@@ -18,7 +18,7 @@ interface Props {
   open: boolean
 }
 
-const props = defineProps<Props>()
+const props = defineProps<Props>() 
 
 import {
   Field,

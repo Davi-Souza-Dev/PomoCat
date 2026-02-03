@@ -20,7 +20,7 @@ const showDialogConfig = ref(false)
   >
     <CentralIcon />
 
-    <h1 class="font-extrabold uppercase text-6xl md:text-9xl tracking-tighter">
+    <h1 class="font-extrabold uppercase text-6xl md:text-7xl tracking-tighter">
       {{ String(timerStore.timer.min).padStart(2, '0') }}:{{
         String(timerStore.timer.sec).padStart(2, '0')
       }}
@@ -28,13 +28,13 @@ const showDialogConfig = ref(false)
 
     <ButtonGroup class="md:scale-125 transition-transform">
       <Button 
-        class="w-32 h-12 md:w-48 md:h-16 border-2 border-primary-foreground" 
+        class="w-32 h-12 md:w-40 md:h-10 border-2 border-primary-foreground" 
         @click="timerStore.startTimer()"
       >
         <PlayIcon class="fill-foreground md:scale-125" />
       </Button>
       <Button 
-        class="w-12 h-12 md:h-16 md:w-16 border-2 border-foreground px-5" 
+        class="w-12 h-12 md:h-10 md:w-10 border-2 border-foreground px-5" 
         @click="showDialogConfig = true"
       >
         <Settings class="md:scale-125" />
@@ -45,7 +45,7 @@ const showDialogConfig = ref(false)
   <div v-else class="flex flex-col justify-center gap-5 md:gap-10 items-center">
     <CentralIcon />
 
-    <h1 class="font-extrabold uppercase text-7xl md:text-[12rem] tracking-tighter leading-none">
+    <h1 class="font-extrabold uppercase text-6xl md:text-7xl tracking-tighter">
       {{ String(timerStore.timer.min).padStart(2, '0') }}:{{
         String(timerStore.timer.sec).padStart(2, '0')
       }}
@@ -53,7 +53,7 @@ const showDialogConfig = ref(false)
 
     <ButtonGroup class="md:scale-125 transition-transform">
       <Button 
-        class="w-32 h-12 md:w-56 md:h-16 border-2 border-primary-foreground" 
+        class="w-32 h-12 md:w-50 md:h-10 border-2 border-primary-foreground" 
         @click="timerStore.startTimer()"
       >
         <XIcon class="fill-foreground md:scale-125" />
